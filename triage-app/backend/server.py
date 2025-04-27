@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
+from flask_cors import CORS
 
 # ------------------------------------------------------------------
 # Model setup (done once, when the app starts)
@@ -18,6 +19,7 @@ print("Model loaded!")
 # Flask app
 # ------------------------------------------------------------------
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/predict", methods=["POST"])
 def predict():
